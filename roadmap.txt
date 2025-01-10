@@ -1,6 +1,18 @@
 road map 
 1-  Modules
         A module is a class annotated with a @Module() decorator. The @Module() decorator provides metadata that Nest makes use of to organize the application structure.
+
 2-  controllers
         Controllers are responsible for handling incoming requests and returning responses to the client.
+
+3- Services
+        * returning data
+        * Common Use Cases:
+                - Interacting with databases
+                - Making HTTP requests
+                - Performing complex calculations
+                - Implementing business rules
+
+
+
 
