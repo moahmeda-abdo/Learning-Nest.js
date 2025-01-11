@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, ParseIntPipe, ParseUUIDPipe, Post, Query } from "@nestjs/common";
 import { UserService } from "./user.service";
+import { ValidationPipe } from "./validation/validation.pipe";
 
 @Controller('users')
 export class UsersController {
@@ -12,7 +13,7 @@ export class UsersController {
 
     
     @Get(":id")
-    getUserWithID(@Param("id" , ParseUUIDPipe) param : number) {
+    getUserWithID(@Param("id" , ValidationPipe) param : number) {
         console.log(param);
         return 'this.userService.getAllUsers()';
     }
