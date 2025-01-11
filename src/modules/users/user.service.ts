@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { ForbiddenException } from "src/exceptions/forbidden.exception";
+import { ForbiddenException } from "src/modules/users/exceptions/forbidden.exception";
 
 
 
