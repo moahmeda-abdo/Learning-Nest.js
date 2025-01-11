@@ -1,5 +1,8 @@
-Source : https://www.youtube.com/playlist?list=PLOldSEMXUdZsFAEJwxYkE83dhm1ZkWEOL
-road map 
+> Source : https://www.youtube.com/playlist?list=PLOldSEMXUdZsFAEJwxYkE83dhm1ZkWEOL
+> documentation is very very important : https://docs.nestjs.com/
+
+
+> road map 
 1-  Modules
         A module is a class annotated with a @Module() decorator. The @Module() decorator provides metadata that Nest makes use of to organize the application structure.
 
@@ -26,7 +29,11 @@ road map
         * Pipes have two typical use cases:
                 - transformation: transform input data to the desired form (e.g., from string to integer)
                 - validation: evaluate input data and if valid, simply pass it through unchanged; otherwise, throw an exception
-        * 
+
+8- class validator , scope pipes , DTO & ValidationPipes
+        * There is a GitHub repository for class-validator that is highly informative and contains a wealth of methods and information.
+        * https://github.com/typestack/class-validator 
+
 
 
 
