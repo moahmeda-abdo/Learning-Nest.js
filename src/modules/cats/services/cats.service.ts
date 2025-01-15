@@ -12,20 +12,20 @@ export class CatsService {
     async findAll(): Promise<Cat[]> {
         const cats = await this.catModel.find();
 
-        if (!cats || cats.length === 0)  throw new HttpException('Cats not found', HttpStatus.NOT_FOUND);
-    
+        if (!cats || cats.length === 0) throw new HttpException('Cats not found', HttpStatus.NOT_FOUND);
+
         return cats;
     }
 
     async findOne(id: string): Promise<Cat> {
         const cat = await this.catModel.findById(id);
 
-        if (!cat)  throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
-        
+        if (!cat) throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
+
         return cat;
     }
 
-    async create(data : any): Promise<Cat> {
+    async create(data: any): Promise<Cat> {
         const createdCat = new this.catModel(data);
         return createdCat.save();
     }
@@ -33,7 +33,7 @@ export class CatsService {
     async update(id: string, data: any): Promise<Cat> {
         const updatedCat = await this.catModel.findById(id);
 
-        if(!updatedCat) throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
+        if (!updatedCat) throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
 
         Object.assign(updatedCat, data);
 
@@ -42,11 +42,14 @@ export class CatsService {
         return updatedCat;
     }
 
-    async delete(id: string): Promise<Cat> {
-        const cat = await this.catModel.findByIdAndDelete(id);
+    async delete(id: string): Promise<void> {
+        try {
+            const cat = await this.catModel.findByIdAndDelete(id);
 
-        if(!cat) throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
-        
-        return cat
+            if (!cat) throw new HttpException('Cat not found', HttpStatus.NOT_FOUND);
+            
+        } catch (error) {
+            throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
