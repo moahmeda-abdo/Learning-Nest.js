@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CatsService } from '../services/cats.service';
 import { Cat } from '../interfaces/cats.interface';
+import { CreateDto, UpdateDto } from '../validations/dto.validation';
 
 @Controller('cats')
 export class CatsController {
@@ -17,13 +18,13 @@ export class CatsController {
     }
 
     @Patch('/:id')
-    async update(@Param('id') id: string, @Body() data: Cat) {
+    async update(@Param('id' ) id: string, @Body( new ValidationPipe) data: UpdateDto) {
         return this.catsService.update(id, data);
     }
 
     @Post()
-    @UsePipes(new ValidationPipe({ whitelist: true , forbidNonWhitelisted: true }))
-    async create(@Body() data: Cat) {
+    // @UsePipes(new ValidationPipe({ whitelist: true , forbidNonWhitelisted: true }))
+    async create(@Body( new ValidationPipe) data: CreateDto) {
         return this.catsService.create(data);
     }
 
